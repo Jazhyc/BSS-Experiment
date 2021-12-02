@@ -3,7 +3,7 @@
 import csv, os
 
 DATA_PATH = "Data\Experiment_Data.csv"
-DATA_FIELDS = ['P_ID', 'Image Count', 'Word Count', 'Order']
+DATA_FIELDS = ['P_ID', 'Image Count', 'Word Count', 'Order', 'Presented Words', 'Answered Text', 'Presented Images', 'Answered Image Text']
 # P_ID = Participant ID
 # Order = Order in which the items were presented
 
@@ -42,7 +42,7 @@ def getAnswers(chosenWords):
 
 
 
-def recordAnswers(ImageCount, wordCount, order):
+def recordAnswers(ImageCount, wordCount, order, presentedWords, answeredText, presentedImages, answeredImageText):
     """Records the number of items recalled into a csv file"""
 
     # If the file does not exist, then create it
@@ -63,7 +63,7 @@ def recordAnswers(ImageCount, wordCount, order):
         # Gets the number of lines in the file
         ID = sum(1 for line in dataFile)
 
-        data = [ID, ImageCount, wordCount, order]
+        data = [ID, ImageCount, wordCount, order, presentedWords, answeredText, presentedImages, answeredImageText]
 
         # Creates a dictionary object
         row = dict(zip(DATA_FIELDS, data))

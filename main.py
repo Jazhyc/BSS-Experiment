@@ -30,38 +30,38 @@ def main():
     if order == 1:
 
         wordList = getImageNames(SAMPLE_SIZE)
-        filteredWords = cleanWords(wordList)
+        presentedWords = cleanWords(wordList)
 
-        displayWords(filteredWords)
-        wordCount, wordText = getAnswers(filteredWords)
+        displayWords(presentedWords)
+        wordCount, wordText = getAnswers(presentedWords)
 
         takeBreak(order)
 
         wordList = getImageNames(SAMPLE_SIZE)
-        filteredWords = cleanWords(wordList)
+        presentedImages = cleanWords(wordList)
 
         displayImages(wordList)
-        imageCount, imageText = getAnswers(filteredWords)
+        imageCount, imageText = getAnswers(presentedImages)
     
     # Images first
     else:
         
         wordList = getImageNames(SAMPLE_SIZE)
-        filteredWords = cleanWords(wordList)
+        presentedImages = cleanWords(wordList)
 
         displayImages(wordList)
-        imageCount, imageText = getAnswers(filteredWords)
+        imageCount, imageText = getAnswers(presentedImages)
 
         takeBreak(order)
 
         wordList = getImageNames(SAMPLE_SIZE)
-        filteredWords = cleanWords(wordList)
+        presentedWords = cleanWords(wordList)
 
-        displayWords(filteredWords)
-        wordCount, wordText = getAnswers(filteredWords)
+        displayWords(presentedWords)
+        wordCount, wordText = getAnswers(presentedWords)
 
     # Enters data into a csv file
-    recordAnswers(imageCount, wordCount, order)
+    recordAnswers(imageCount, wordCount, order, presentedWords, wordText, presentedImages, imageText)
 
     endText = 'The experiment has concluded. Thank you for your cooperation \n\n\n Press Enter to end the program'
     showText(endText, 'interactive')
