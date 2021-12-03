@@ -81,7 +81,6 @@ def changeText(index, wordList, canvas, textObject, root):
 
 
 def takeBreak(order):
-    os.system('cls')
     secondType = 'images' if order == 1 else 'words'
     breakText = f"Take a break: Have a cookie \n\n\n You will be presented with {secondType} next \n\n\n Press Enter to continue"
     showText(breakText, 'interactive')
@@ -96,6 +95,7 @@ def showPIL(pilImages):
     w, h = root.winfo_screenwidth(), root.winfo_screenheight()
     root.overrideredirect(1)
     root.geometry("%dx%d+0+0" % (w, h))
+    root.focus_force()
     root.focus_set()    
     
     canvas = tkinter.Canvas(root,width=w,height=h)

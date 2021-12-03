@@ -1,12 +1,39 @@
 """This file contains functions necessary to record the results of the experiment"""
 
 import csv, os
+from tkinter import *
 
 DATA_PATH = "Data\Experiment_Data.csv"
 DATA_FIELDS = ['P_ID', 'Image Count', 'Word Count', 'Order', 'Presented Words', 'Answered Text', 'Presented Images', 'Answered Image Text']
 # P_ID = Participant ID
 # Order = Order in which the items were presented
 
+def answerTextBox():
+    root = Tk()
+    w, h = root.winfo_screenwidth(), root.winfo_screenheight()
+    root.overrideredirect(1)
+    root.geometry("%dx%d+0+0" % (w, h))
+    root.focus_set() 
+    root.focus_force()
+    root.title("Answers")
+
+    def Take_input():
+        global tempAnswers
+        tempAnswers = inputText.get("1.0", "end-1c")
+        root.destroy()
+        
+    l = Label(text = "Enter words one after the other with a comma in between. Eg: apple, banana, orange:")
+
+    inputText = Text(root, height = 10, width = 160, bg = "light yellow")
+    
+    Display = Button(root, height = 3, width = 30, text = "Click to Submit", command = lambda: Take_input(), bg='white')
+    
+    l.pack()
+    inputText.pack()
+    Display.pack()
+    mainloop()
+
+    return tempAnswers
 
 def getAnswers(chosenWords):
     """Returns the number of correctly recalled items as well as the text that the user inputted"""
@@ -18,10 +45,11 @@ def getAnswers(chosenWords):
     count = 0
     answeredWords = []
 
-    # Temporary formatting
-    print("Enter words one after the other with a comma in between. Eg: apple, banana, orange:")
-    text = input()
-    print()
+    # Prevents effecting other functions
+    tempWords = chosenWords.copy()
+
+    # Creates custom tkinter gui to input text
+    text = answerTextBox()
 
     answeredWords = text.split(',')
 
@@ -31,12 +59,12 @@ def getAnswers(chosenWords):
         # Removes formatting
         word = word.lower().strip()
 
-        if word in chosenWords:
+        if word in tempWords:
 
             count+= 1
 
             # This is necessary to ensure that the participant does not write the same word multiple times
-            chosenWords.remove(word)
+            tempWords.remove(word)
 
     return count, text
 
