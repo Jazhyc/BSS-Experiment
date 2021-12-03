@@ -1,4 +1,0 @@
-P_ID,Image Count,Word Count,Order,Presented Words,Answered Text,Presented Images,Answered Image Text
-1,0,1,1,"['pear', 'banana', 'apple']","apples, banana","['banana', 'apple', 'pear']",Experiment
-2,0,0,2,"['apple', 'pear', 'banana']",Enter text here,"['apple', 'pear', 'banana']",Enter text here
-3,0,0,2,"['apple', 'pear', 'banana']",This is an experiment,"['banana', 'apple', 'pear']",Enter text here

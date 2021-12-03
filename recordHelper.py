@@ -16,31 +16,28 @@ def answerTextBox():
     root.focus_set() 
     root.focus_force()
     root.title("Answers")
+    root.configure(background='white')
 
     def Take_input():
         global tempAnswers
         tempAnswers = inputText.get("1.0", "end-1c")
         root.destroy()
         
-    l = Label(text = "Enter words one after the other with a comma in between. Eg: apple, banana, orange:")
+    l = Label(text = "Enter words one after the other with a comma in between. Eg: apple, banana, orange:", font="Calibri 24 bold", justify='center', bg='white')
 
-    inputText = Text(root, height = 10, width = 160, bg = "light yellow")
+    inputText = Text(root, height = 10, width = 120, bg = "#F5F5F5", font="Calibri 14 bold")
     
-    Display = Button(root, height = 3, width = 30, text = "Click to Submit", command = lambda: Take_input(), bg='white')
+    Display = Button(root, height = 3, width = 30, text = "Click to Submit", command = lambda: Take_input(), bg='light grey', font="Calibri 14 bold")
     
-    l.pack()
-    inputText.pack()
-    Display.pack()
+    l.place(x = w // 2 - l.winfo_reqwidth() // 2,y = int(1 / 4 * h))
+    inputText.place(x = w // 2 - 600, y = h // 2 - 100)
+    Display.place(x = w // 2 - 150, y = int(3 / 4 * h))
     mainloop()
 
     return tempAnswers
 
 def getAnswers(chosenWords):
     """Returns the number of correctly recalled items as well as the text that the user inputted"""
-
-    # Clears the terminal
-    #* Change to 'clear' to work on MAC and Linux
-    os.system('cls')
 
     count = 0
     answeredWords = []
@@ -90,6 +87,10 @@ def recordAnswers(ImageCount, wordCount, order, presentedWords, answeredText, pr
 
         # Gets the number of lines in the file
         ID = sum(1 for line in dataFile)
+        
+        # Clean data
+        answeredText = answeredText.replace('\n', '')
+        answeredImageText = answeredImageText.replace('\n', '')
 
         data = [ID, ImageCount, wordCount, order, presentedWords, answeredText, presentedImages, answeredImageText]
 
