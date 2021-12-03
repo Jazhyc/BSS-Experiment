@@ -100,7 +100,7 @@ def showPIL(pilImages):
     
     canvas = tkinter.Canvas(root,width=w,height=h)
     canvas.pack()
-    canvas.configure(background='black')
+    canvas.configure(background='White')
     
     # We need this block to create the image sprite
     pilImage = Image.open(f'Images/{pilImages[0]}')
@@ -126,7 +126,7 @@ def showText(text, displayType):
     if displayType == 'interactive':
         root.bind("<Return>", lambda e: (root.destroy())) 
 
-    canvas = tkinter.Canvas(root, width=w, height=h, bg='Black')
+    canvas = tkinter.Canvas(root, width=w, height=h, bg='White')
 
     # Determines font size
     fontSize = 128 if displayType == 'presentation' else 24
@@ -137,7 +137,7 @@ def showText(text, displayType):
     if displayType == 'presentation':
         firstWord = text[0]
 
-    currentText = canvas.create_text(w / 2, h / 2, text=firstWord, fill="white", font=(f'Calibri {fontSize} bold'), width=w, justify='center')
+    currentText = canvas.create_text(w / 2, h / 2, text=firstWord, fill="black", font=(f'Calibri {fontSize} bold'), width=w, justify='center')
     canvas.pack()
 
     if displayType == 'presentation':
