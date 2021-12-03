@@ -35,6 +35,8 @@ def main():
         displayWords(presentedWords)
         wordCount, wordText = getAnswers(presentedWords)
 
+        presentPerformance(wordCount, len(presentedWords))
+
         takeBreak(order)
 
         wordList = getImageNames(SAMPLE_SIZE)
@@ -42,6 +44,8 @@ def main():
 
         displayImages(wordList)
         imageCount, imageText = getAnswers(presentedImages)
+
+        presentPerformance(imageCount, len(presentedImages))
     
     # Images first
     else:
@@ -52,6 +56,8 @@ def main():
         displayImages(wordList)
         imageCount, imageText = getAnswers(presentedImages)
 
+        presentPerformance(imageCount, len(presentedImages))
+
         takeBreak(order)
 
         wordList = getImageNames(SAMPLE_SIZE)
@@ -59,6 +65,8 @@ def main():
 
         displayWords(presentedWords)
         wordCount, wordText = getAnswers(presentedWords)
+
+        presentPerformance(wordCount, len(presentedWords))
 
     # Enters data into a csv file
     recordAnswers(imageCount, wordCount, order, presentedWords, wordText, presentedImages, imageText)

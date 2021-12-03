@@ -85,6 +85,9 @@ def takeBreak(order):
     breakText = f"Take a break: Have a cookie \n\n\n You will be presented with {secondType} next \n\n\n Press Enter to continue"
     showText(breakText, 'interactive')
 
+def presentPerformance(correctWords, totalWords):
+    presentText = f'You got {correctWords} / {totalWords} items correct \n\n\n Press Enter to continue'
+    showText(presentText, 'interactive')
 
 # Obtained from https://stackoverflow.com/questions/47316266/can-i-display-image-in-full-screen-mode-with-pil/47317411
 # Updated slightly to fit our purposes. The code is quite flexible and accounts for images of different sizes

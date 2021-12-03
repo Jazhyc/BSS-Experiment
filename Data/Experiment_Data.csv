@@ -1,0 +1,2 @@
+P_ID,Image Count,Word Count,Order,Presented Words,Answered Text,Presented Images,Answered Image Text
+1,2,3,2,"['banana', 'apple', 'pear']","banana, apple, pear","['pear', 'apple', 'banana']","pear, apple"
