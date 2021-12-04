@@ -5,8 +5,8 @@ import os
 from recordHelper import *
 from presentationHelper import *
 
-# Number of images to be presented to the participant
-SAMPLE_SIZE = 15
+# Number of items to be presented to the participant
+SAMPLE_SIZE = 14
 
 def main():
     """Conducts the experiment and records the results"""
@@ -26,10 +26,12 @@ def main():
     orderText = f"You will be presented with {firstType} first \n\n\n Press Enter to continue"
     showText(orderText, 'interactive')
 
+    allImages = os.listdir('Images')
+
     # Words first
     if order == 1:
 
-        wordList = getImageNames(SAMPLE_SIZE)
+        wordList = getImageNames(SAMPLE_SIZE, allImages)
         presentedWords = cleanWords(wordList)
 
         displayWords(presentedWords)
@@ -39,7 +41,7 @@ def main():
 
         takeBreak(order)
 
-        wordList = getImageNames(SAMPLE_SIZE)
+        wordList = getImageNames(SAMPLE_SIZE, allImages)
         presentedImages = cleanWords(wordList)
 
         displayImages(wordList)
@@ -50,7 +52,7 @@ def main():
     # Images first
     else:
         
-        wordList = getImageNames(SAMPLE_SIZE)
+        wordList = getImageNames(SAMPLE_SIZE, allImages)
         presentedImages = cleanWords(wordList)
 
         displayImages(wordList)
@@ -60,7 +62,7 @@ def main():
 
         takeBreak(order)
 
-        wordList = getImageNames(SAMPLE_SIZE)
+        wordList = getImageNames(SAMPLE_SIZE, allImages)
         presentedWords = cleanWords(wordList)
 
         displayWords(presentedWords)

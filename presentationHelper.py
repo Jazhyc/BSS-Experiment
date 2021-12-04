@@ -9,14 +9,15 @@ from PIL import Image, ImageTk
 # Number of seconds that an item is presented for
 TIME_INTERVAL = 2
 
-def getImageNames(size):
+def getImageNames(size, AllImages):
     """Returns a list of random image names"""
 
-    imageList = os.listdir('Images')
-
     # Takes SAMPLE_SIZE random words if there are enough images
-    size = min(len(imageList), size)
-    imageList = random.sample(imageList, size)
+    size = min(len(AllImages), size)
+    imageList = random.sample(AllImages, size)
+
+    for i in imageList:
+        AllImages.remove(i)
 
     return imageList
 
@@ -45,11 +46,9 @@ def cleanWords(wordList):
 def resizeImage(pilImage, w, h):
     imgWidth, imgHeight = pilImage.size
 
-    if imgWidth > w or imgHeight > h:
-        ratio = min(w/imgWidth, h/imgHeight)
-        imgWidth = int(imgWidth*ratio)
-        imgHeight = int(imgHeight*ratio)
-        pilImage = pilImage.resize((imgWidth,imgHeight), Image.ANTIALIAS)
+    imgWidth = int(500)
+    imgHeight = int(500)
+    pilImage = pilImage.resize((imgWidth,imgHeight), Image.ANTIALIAS)
     
     return pilImage
 
@@ -89,8 +88,6 @@ def presentPerformance(correctWords, totalWords):
     presentText = f'You got {correctWords} / {totalWords} items correct \n\n\n Press Enter to continue'
     showText(presentText, 'interactive')
 
-# Obtained from https://stackoverflow.com/questions/47316266/can-i-display-image-in-full-screen-mode-with-pil/47317411
-# Updated slightly to fit our purposes. The code is quite flexible and accounts for images of different sizes
 # Displays image in a custom GUI
 def showPIL(pilImages):
 
