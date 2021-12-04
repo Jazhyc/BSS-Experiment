@@ -18,8 +18,12 @@ def main():
     # Decides whether words or images will be presented first
     order = random.randint(1, 2)
 
+    # Get Demographic Data
+    age = int(answerTextBox("Please Enter your age in integers"))
+    gender = answerTextBox("Please Enter your gender in letters").upper()
+
     # Instructions
-    introText = "You will be presented with a sequence of items that either consist of images or words only. Once this presentation is complete, you will be required to recall all the items remembered \n\n\n Press Enter to continue"
+    introText = "You will be presented with a sequence of items that either consists of images or words only. Once this presentation is complete, you will be required to list down all the items remembered. You will then repeat the experiment for the next item type \n\n\n Press Enter to continue"
     showText(introText, 'interactive')
 
     firstType = 'words' if order == 1 else 'images'
@@ -71,7 +75,7 @@ def main():
         presentPerformance(wordCount, len(presentedWords))
 
     # Enters data into a csv file
-    recordAnswers(imageCount, wordCount, order, presentedWords, wordText, presentedImages, imageText)
+    recordAnswers(age, gender, imageCount, wordCount, order, presentedWords, wordText, presentedImages, imageText)
 
     endText = 'The experiment has concluded. Thank you for your cooperation \n\n\n Press Enter to end the program'
     showText(endText, 'interactive')

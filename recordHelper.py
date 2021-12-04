@@ -4,11 +4,11 @@ import csv, os
 from tkinter import *
 
 DATA_PATH = "Data\Experiment_Data.csv"
-DATA_FIELDS = ['P_ID', 'Image Count', 'Word Count', 'Order', 'Presented Words', 'Answered Text', 'Presented Images', 'Answered Image Text']
+DATA_FIELDS = ['P_ID', 'Age', 'Gender', 'Image Count', 'Word Count', 'Order', 'Presented Words', 'Answered Text', 'Presented Images', 'Answered Image Text']
 # P_ID = Participant ID
 # Order = Order in which the items were presented
 
-def answerTextBox():
+def answerTextBox(text):
     root = Tk()
     w, h = root.winfo_screenwidth(), root.winfo_screenheight()
     root.overrideredirect(1)
@@ -23,7 +23,7 @@ def answerTextBox():
         tempAnswers = inputText.get("1.0", "end-1c")
         root.destroy()
         
-    l = Label(text = "Enter words one after the other with a comma in between. Eg: pumpkin, banana, orange:", font="Calibri 24 bold", justify='center', bg='white')
+    l = Label(text = text, font="Calibri 24 bold", justify='center', bg='white')
 
     inputText = Text(root, height = 10, width = 120, bg = "#F5F5F5", font="Calibri 14 bold")
     
@@ -46,7 +46,7 @@ def getAnswers(chosenWords):
     tempWords = chosenWords.copy()
 
     # Creates custom tkinter gui to input text
-    text = answerTextBox()
+    text = answerTextBox("Enter words one after the other with a comma in between. Eg: pumpkin, banana, orange:",)
 
     answeredWords = text.split(',')
 
@@ -67,7 +67,7 @@ def getAnswers(chosenWords):
 
 
 
-def recordAnswers(ImageCount, wordCount, order, presentedWords, answeredText, presentedImages, answeredImageText):
+def recordAnswers(age, gender, ImageCount, wordCount, order, presentedWords, answeredText, presentedImages, answeredImageText):
     """Records the number of items recalled into a csv file"""
 
     # If the file does not exist, then create it
@@ -92,7 +92,7 @@ def recordAnswers(ImageCount, wordCount, order, presentedWords, answeredText, pr
         answeredText = answeredText.replace('\n', '')
         answeredImageText = answeredImageText.replace('\n', '')
 
-        data = [ID, ImageCount, wordCount, order, presentedWords, answeredText, presentedImages, answeredImageText]
+        data = [ID, age, gender, ImageCount, wordCount, order, presentedWords, answeredText, presentedImages, answeredImageText]
 
         # Creates a dictionary object
         row = dict(zip(DATA_FIELDS, data))

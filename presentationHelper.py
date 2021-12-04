@@ -7,7 +7,7 @@ import random
 from PIL import Image, ImageTk
 
 # Number of seconds that an item is presented for
-TIME_INTERVAL = 2
+TIME_INTERVAL = 3
 
 def getImageNames(size, AllImages):
     """Returns a list of random image names"""
@@ -81,7 +81,7 @@ def changeText(index, wordList, canvas, textObject, root):
 
 def takeBreak(order):
     secondType = 'images' if order == 1 else 'words'
-    breakText = f"Take a break: Have a cookie \n\n\n You will be presented with {secondType} next \n\n\n Press Enter to continue"
+    breakText = f"Take a break \n\n\n You will be presented with {secondType} next \n\n\n Press Enter to continue"
     showText(breakText, 'interactive')
 
 def presentPerformance(correctWords, totalWords):

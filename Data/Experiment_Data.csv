@@ -1,3 +1,0 @@
-P_ID,Image Count,Word Count,Order,Presented Words,Answered Text,Presented Images,Answered Image Text
-1,4,6,1,"['bone', 'flower', 'fish', 'tree', 'drum', 'frog', 'chicken', 'shoes', 'triangle', 'car', 'camera', 'apple', 'star', 'cannon']","bone, flower, tree, drum, star, cannon","['tooth', 'crown', 'train', 'bike', 'key', 'guitar', 'chair', 'mirror', 'kite', 'plane', 'calculator', 'hammer', 'spoon', 'eye']","eye, hammer, mirror, plane"
-2,0,0,2,"['frog', 'shoes', 'calculator', 'fish', 'spoon', 'key', 'eye', 'flower', 'chicken', 'bone', 'star', 'plane', 'hammer', 'bike']",,"['guitar', 'train', 'kite', 'tooth', 'apple', 'camera', 'chair', 'crown', 'mirror', 'tree', 'drum', 'triangle', 'cannon', 'car']",
