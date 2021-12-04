@@ -19,8 +19,8 @@ def main():
     order = random.randint(1, 2)
 
     # Get Demographic Data
-    age = int(answerTextBox("Please Enter your age in integers"))
-    gender = answerTextBox("Please Enter your gender in letters").upper()
+    age = int(answerTextBox("Please Enter your age in integers").replace('\n', ''))
+    gender = answerTextBox("Please Enter your gender in letters").upper().replace('\n', '')
 
     # Instructions
     introText = "You will be presented with a sequence of items that either consists of images or words only. Once this presentation is complete, you will be required to list down all the items remembered. You will then repeat the experiment for the next item type \n\n\n Press Enter to continue"
