@@ -23,7 +23,7 @@ def answerTextBox():
         tempAnswers = inputText.get("1.0", "end-1c")
         root.destroy()
         
-    l = Label(text = "Enter words one after the other with a comma in between. Eg: apple, banana, orange:", font="Calibri 24 bold", justify='center', bg='white')
+    l = Label(text = "Enter words one after the other with a comma in between. Eg: pumpkin, banana, orange:", font="Calibri 24 bold", justify='center', bg='white')
 
     inputText = Text(root, height = 10, width = 120, bg = "#F5F5F5", font="Calibri 14 bold")
     
