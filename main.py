@@ -23,7 +23,7 @@ def main():
     gender = answerTextBox("Please Enter your gender in letters").upper().replace('\n', '')
 
     # Instructions
-    introText = "You will be presented with a sequence of items that either consists of images or words only. Once this presentation is complete, you will be required to list down all the items remembered. You will then repeat the experiment for the next item type \n\n\n Press Enter to continue"
+    introText = "You will be presented with a sequence of items that either consists of images or words only. Once this presentation is complete, you will be required to list down all the items remembered in any order. You will then repeat the experiment for the next item type \n\n\n Press Enter to continue"
     showText(introText, 'interactive')
 
     firstType = 'words' if order == 1 else 'images'
