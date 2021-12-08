@@ -46,7 +46,7 @@ def getAnswers(chosenWords):
     tempWords = chosenWords.copy()
 
     # Creates custom tkinter gui to input text
-    text = answerTextBox("Enter words one after the other with a comma in between. Eg: pumpkin, banana, orange:",)
+    text = answerTextBox("Enter words one after the other with a comma in between. Eg: pumpkin, banana, orange. Note that each item is only one word long",)
 
     answeredWords = text.split(',')
 
@@ -56,7 +56,18 @@ def getAnswers(chosenWords):
         # Removes formatting
         word = word.lower().strip()
 
-        if word in tempWords:
+        mayBePlural = True if word[-1] == 's' else False
+
+        # Account for plural words
+        if mayBePlural and word[:len(word) - 1] in tempWords:
+
+            count+= 1
+
+            tempWords.remove(word[:len(word) - 1])
+
+
+        # Account for singular and plural
+        elif word in tempWords:
 
             count+= 1
 
