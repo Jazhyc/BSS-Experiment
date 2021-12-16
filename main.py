@@ -1,6 +1,7 @@
 """Core file of our experiment"""
 
 import os
+from PIL import Image
 
 from recordHelper import *
 from presentationHelper import *
@@ -77,9 +78,11 @@ def main():
     # Enters data into a csv file
     recordAnswers(age, gender, imageCount, wordCount, order, presentedWords, wordText, presentedImages, imageText)
 
-    endText = 'The experiment has concluded. Thank you for your cooperation \n\n\n Press Enter to end the program'
+    endText = 'The experiment has concluded. Thank you for your cooperation. You will receive a reward \n\n\n Press Enter to end the program'
     showText(endText, 'interactive')
 
+    cookie = Image.open('cookie.png')
+    cookie.show()
 
 if __name__ == "__main__":
     main()

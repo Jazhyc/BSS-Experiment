@@ -56,18 +56,8 @@ def getAnswers(chosenWords):
         # Removes formatting
         word = word.lower().strip()
 
-        mayBePlural = True if word[-1] == 's' else False
-
-        # Account for plural words
-        if mayBePlural and word[:len(word) - 1] in tempWords:
-
-            count+= 1
-
-            tempWords.remove(word[:len(word) - 1])
-
-
         # Account for singular and plural
-        elif word in tempWords:
+        if word in tempWords:
 
             count+= 1
 
